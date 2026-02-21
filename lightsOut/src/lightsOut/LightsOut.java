@@ -8,7 +8,7 @@ public class LightsOut {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		boolean sortir = false;
-		
+		int [][] taulell = new int [0][0];
 		
 		while(!sortir)
 		{
@@ -20,8 +20,6 @@ public class LightsOut {
 			
 			int opcio = sc.nextInt();
 			
-			int [][] taulell = new int [0][0];
-			
 			switch (opcio) {
 			case 1: {
 				jugar(taulell,nomJugador);
@@ -29,7 +27,7 @@ public class LightsOut {
 			}
 			case 2:{
 				//configurar
-				configuracio(taulell);
+				taulell = configuracio(taulell);
 				break;
 			}
 			case 3:{
@@ -46,7 +44,7 @@ public class LightsOut {
 
 
 
-	private static void configuracio(int[][] taulell) {
+	private static int [][] configuracio(int[][] taulell) {
 		// TODO Auto-generated method stub
 		boolean sortir = false;
 		
@@ -66,7 +64,7 @@ public class LightsOut {
 			}
 			case 2:{
 				//preguntar per files i columnes
-				definirTamanyTaula(taulell);
+				taulell = definirTamanyTaula(taulell);
 				//comprovar si es cuadrat, si ho es, seguir.
 				break;
 			}
@@ -78,13 +76,13 @@ public class LightsOut {
 			default:
 				throw new IllegalArgumentException("Unexpected value: " + opcio);
 			}
-			
 		}
+		return taulell;
 	}
 
 
 
-	private static void definirTamanyTaula(int [][] taulell) {
+	private static int [][] definirTamanyTaula(int [][] taulell) {
 		// TODO Auto-generated method stub
 		System.out.println("Introdueix el tamany de les files: ");
 		int f = sc.nextInt();
@@ -94,6 +92,8 @@ public class LightsOut {
 		
 		System.out.println("Tamany de les files: " + f);
 		System.out.println("Tamany de les columnes: " + c);
+		
+		return taulell;
 	}
 
 
@@ -105,6 +105,7 @@ public class LightsOut {
 		InicialitzarTaulell(taulell);
 		while(!fi) {
 			mostrarTaulell(taulell);
+			System.out.println("Hola");
 			//Posicio p = seleccionarPosicio();
 			//canviarLlums(p,taulell);
 			fi = comprovarVictoria(taulell);
@@ -120,9 +121,6 @@ public class LightsOut {
 		
 		return false;
 	}
-
-
-
 	private static void mostrarTaulell(int[][] taulell) {
 		// TODO Auto-generated method stub
 		for (int i = 0; i < taulell.length; i++) {
@@ -142,13 +140,9 @@ public class LightsOut {
 		
 		for (int i = 0; i < taulell.length; i++) {
             for (int j = 0; j < taulell[0].length; j++) {
-               taulell[i][j] = numRandom.nextInt(1);
+               taulell[i][j] = numRandom.nextInt(2);
             }
-        }
-		
-		
-		
-		
+        }	
 	}
 	
 
